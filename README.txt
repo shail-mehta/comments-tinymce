@@ -2,9 +2,9 @@
 Contributors: shailu25
 Tags: comments,  tinymce,  comment-form-tinymce, tinymce-editor
 Requires at least: 5.0 or higher
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.6 or higher
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,12 @@ Users can easily add TinyMCE Editor in Comment Form in just one click.
 - Frontend Side Editor
 
 == Changelog ==
+
+= 1.0.4 =  
+- Fixed – TinyMCE Editor Loading Issue
+
+= 1.0.3 =  
+- Enhancement – Compatibility updated for WordPress 6.4
 
 = 1.0.2 =  
 - Enhancement – Compatibility updated for WordPress 6.3
