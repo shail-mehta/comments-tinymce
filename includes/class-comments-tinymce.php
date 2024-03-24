@@ -172,8 +172,8 @@ class Comments_Tinymce {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_filter('comment_form_defaults', $plugin_public, 'comment_tinymce_form_defaults', 10, 2);
-		$this->loader->add_action( 'init', $plugin_public, 'comment_tinymce_form_allowed_tags' );
+		$this->loader->add_filter('comment_form_defaults', $plugin_public, 'comment_tinymce_form_defaults', 20, 2); 
+		$this->loader->add_action( 'init', $plugin_public, 'comment_tinymce_form_allowed_tags', 20 );
 	}
 
 	/**
