@@ -39,7 +39,7 @@ class Comments_Tinymce_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-
+	private $comment_tinymce_options;
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -51,6 +51,7 @@ class Comments_Tinymce_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->comment_tinymce_options = Comments_Tinymce::comment_tinymce_get_options();
 
 	}
 
@@ -137,4 +138,51 @@ class Comments_Tinymce_Public {
 		        'title' => true,
 		    );
 	}
+	function comment_tinymce_customize($init) { 
+	    // Initialize an array to store the block formats
+	    $block_formats = array();
+
+	    // Store all heading formats in one variable
+	    $heading_formats = array();
+		$block_formats[] = 'Paragraph=p';
+	    // Add the heading formats based on options
+	    if (empty($this->comment_tinymce_options['comment_tinymce_heading_one'])) {
+	        $heading_formats[] = 'Heading 1=h1';
+	    }
+	    if (empty($this->comment_tinymce_options['comment_tinymce_heading_two'])) {
+	        $heading_formats[] = 'Heading 2=h2';
+	    }
+	    if (empty($this->comment_tinymce_options['comment_tinymce_heading_three'])) {
+	        $heading_formats[] = 'Heading 3=h3';
+	    }
+	    if (empty($this->comment_tinymce_options['comment_tinymce_heading_four'])) {
+	        $heading_formats[] = 'Heading 4=h4';
+	    }
+	    if (empty($this->comment_tinymce_options['comment_tinymce_heading_five'])) {
+	        $heading_formats[] = 'Heading 5=h5';
+	    }
+	    if (empty($this->comment_tinymce_options['comment_tinymce_heading_six'])) {
+	        $heading_formats[] = 'Heading 6=h6';
+	    }
+
+	    // Add all heading formats to the block formats array
+	    $block_formats = array_merge($block_formats, $heading_formats);
+
+	    // Add the Paragraph and Pre formats
+	    
+	    $block_formats[] = 'Pre=pre';
+	    
+	    // Set the block formats in the TinyMCE initialization settings
+	    $init['block_formats'] = implode(';', $block_formats);
+
+
+	    if (isset($init['toolbar'])) {
+	        $init['toolbar'] .= ',formatselect';
+	    } else {
+	        $init['toolbar'] = 'formatselect';
+	    }
+
+	    return $init; 
+	}
+	
 }
