@@ -27,9 +27,6 @@ User can also disable heading tag in tinymce editor. (Visual Mode)
 
 == Changelog ==
 
-= 1.0.6 =  
-- Check Compatibility with WordPress 6.5
-
 = 1.0.5 =  
 - Added Option for Disable Heading Tags in Visual Mode
 
