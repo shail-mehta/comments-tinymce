@@ -74,6 +74,7 @@ class Comments_Tinymce {
 		}
 		$this->plugin_name = 'comments-tinymce';
 
+		$this->comment_tinymce_get_options[] = $this->comment_tinymce_get_options();
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
@@ -156,7 +157,9 @@ class Comments_Tinymce {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        
+        $this->loader->add_action( 'admin_menu', $plugin_admin, 'comment_tinymce_admin_menu' );
+		$this->loader->add_action( 'admin_post_save_comment_tinymce_update_settings',$plugin_admin,'comment_tinymce_update_settings');
+		$this->loader->add_filter( 'plugin_action_links_comment-tinymce/'.$this->plugin_name.'.php',$plugin_admin,'comment_tinymce_settings_link',10,1 );
 	}
 
 	/**
@@ -174,6 +177,8 @@ class Comments_Tinymce {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter('comment_form_defaults', $plugin_public, 'comment_tinymce_form_defaults', 20, 2); 
 		$this->loader->add_action( 'init', $plugin_public, 'comment_tinymce_form_allowed_tags', 20 );
+		$load_comment_tinymce = $this->comment_tinymce_get_options();
+		$this->loader->add_filter('tiny_mce_before_init', $plugin_public, 'comment_tinymce_customize', 20, 2); 
 	}
 
 	/**
@@ -216,4 +221,13 @@ class Comments_Tinymce {
 		return $this->version;
 	}
 
+	public static function comment_tinymce_get_options(){
+		$options['comment_tinymce_heading_one'] = get_option( 'comment_tinymce_heading_one' );
+		$options['comment_tinymce_heading_two'] = get_option( 'comment_tinymce_heading_two' );
+		$options['comment_tinymce_heading_three'] = get_option( 'comment_tinymce_heading_three' );
+		$options['comment_tinymce_heading_four'] = get_option( 'comment_tinymce_heading_four' );
+		$options['comment_tinymce_heading_five'] = get_option( 'comment_tinymce_heading_five' );
+		$options['comment_tinymce_heading_six'] = get_option( 'comment_tinymce_heading_six' );
+		return $options;
+	}
 }
