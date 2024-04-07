@@ -3,7 +3,7 @@
  * Plugin Name:       Comment Form Editor with TinyMCE
  * Plugin URI:        https://wordpress.org/plugins/comments-tinymce
  * Description:       Users can easily add TinyMCE Editor in Comment Form in just one click.
- * Version:           1.0.6
+ * Version:           1.0.5
  * Author:            Shail Mehta
  * Author URI:        https://profiles.wordpress.org/shailu25
  * License:           GPL-2.0+
@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'COMMENTS_TINYMCE_VERSION', '1.0.6' );
+define( 'COMMENTS_TINYMCE_VERSION', '1.0.5' );
 
 /**
  * The code that runs during plugin activation.
