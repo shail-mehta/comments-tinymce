@@ -1,6 +1,6 @@
 === Comment Form Editor with TinyMCE ===
 Contributors: shailu25
-Tags: comments,  tinymce,  comment-form-tinymce, tinymce-editor
+Tags: comments, tinymce, comment-form-tinymce, tinymce-editor
 Requires at least: 5.0 or higher
 Tested up to: 6.4
 Requires PHP: 7.0
