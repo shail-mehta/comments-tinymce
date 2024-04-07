@@ -1,10 +1,10 @@
 === Comment Form Editor with TinyMCE ===
 Contributors: shailu25
-Tags: comments, tinymce, comment-form-tinymce, tinymce-editor
+Tags: comments, tinymce, comment-form, comment-form-tinymce, tinymce-editor
 Requires at least: 5.0 or higher
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.0
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ User can also disable heading tag in tinymce editor. (Visual Mode)
 - Backend Side Settings
 
 == Changelog ==
+
+= 1.0.6 =  
+- Enhancement – Compatibility updated for WordPress 6.5
 
 = 1.0.5 =  
 - Added Option for Disable Heading Tags in Visual Mode
