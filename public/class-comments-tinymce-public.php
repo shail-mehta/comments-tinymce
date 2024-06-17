@@ -92,8 +92,11 @@ class Comments_Tinymce_Public {
 
 	 public function comment_tinymce_form_defaults($args) {
 	    ob_start();
+
+	    $comment_tinymce_show_media_btn = empty($this->comment_tinymce_options['comment_tinymce_media_btn']);
+
 	    wp_editor( '', 'comment', array(
-	        'media_buttons' => true,
+	        'media_buttons' => $comment_tinymce_show_media_btn,
 	        'textarea_rows' => '10',
 	        'dfw' => false,
 	        'tinymce' => array( 'theme_advanced_buttons1' => 'bold,italic,underline,strikethrough,bullist,numlist,code,blockquote,link,unlink,outdent,indent,|,undo,redo,fullscreen',
@@ -165,12 +168,14 @@ class Comments_Tinymce_Public {
 	        $heading_formats[] = 'Heading 6=h6';
 	    }
 
+
 	    // Add all heading formats to the block formats array
 	    $block_formats = array_merge($block_formats, $heading_formats);
 
-	    // Add the Paragraph and Pre formats
-	    
-	    $block_formats[] = 'Pre=pre';
+	    // Conditionally add the Pre format
+	    if (empty($this->comment_tinymce_options['comment_tinymce_pre_tag'])) {
+	        $block_formats[] = 'Pre=pre';
+	    }
 	    
 	    // Set the block formats in the TinyMCE initialization settings
 	    $init['block_formats'] = implode(';', $block_formats);
