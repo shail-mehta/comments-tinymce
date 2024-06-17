@@ -221,13 +221,19 @@ class Comments_Tinymce {
 		return $this->version;
 	}
 
-	public static function comment_tinymce_get_options(){
+	public static function comment_tinymce_get_options() {
+
 		$options['comment_tinymce_heading_one'] = get_option( 'comment_tinymce_heading_one' );
 		$options['comment_tinymce_heading_two'] = get_option( 'comment_tinymce_heading_two' );
 		$options['comment_tinymce_heading_three'] = get_option( 'comment_tinymce_heading_three' );
 		$options['comment_tinymce_heading_four'] = get_option( 'comment_tinymce_heading_four' );
 		$options['comment_tinymce_heading_five'] = get_option( 'comment_tinymce_heading_five' );
 		$options['comment_tinymce_heading_six'] = get_option( 'comment_tinymce_heading_six' );
+		$options['comment_tinymce_heading_six'] = get_option( 'comment_tinymce_heading_six' );
+		$options['comment_tinymce_media_btn'] = get_option( 'comment_tinymce_media_btn' );
+		$options['comment_tinymce_pre_tag'] = get_option( 'comment_tinymce_pre_tag' );
 		return $options;
+
 	}
+
 }

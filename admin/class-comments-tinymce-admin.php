@@ -143,47 +143,57 @@ class Comments_Tinymce_Admin {
 		}
 		
 		if ( ! empty( $_POST ) && check_admin_referer( -1, 'save_comment_tinymce_options' ) ) {
-			//add or update sticky popup Layout 
-					
-			if (  $comment_tinymce_options['comment_tinymce_heading_one'] !== false ) {
+
+			if ( $comment_tinymce_options['comment_tinymce_heading_one'] !== false ) {
 				update_option( 'comment_tinymce_heading_one', sanitize_text_field($_POST['comment_tinymce_heading_one']) );
 			} else {
 				add_option( 'comment_tinymce_heading_one', sanitize_text_field($_POST['comment_tinymce_heading_one']), null, 'no' );
 			}
 
-			if (  $comment_tinymce_options['comment_tinymce_heading_two'] !== false ) {
+			if ( $comment_tinymce_options['comment_tinymce_heading_two'] !== false ) {
 				update_option( 'comment_tinymce_heading_two', sanitize_text_field($_POST['comment_tinymce_heading_two']) );
 			} else {
 				add_option( 'comment_tinymce_heading_two', sanitize_text_field($_POST['comment_tinymce_heading_two']), null, 'no' );
 			}
 
-			if (  $comment_tinymce_options['comment_tinymce_heading_three'] !== false ) {
+			if ( $comment_tinymce_options['comment_tinymce_heading_three'] !== false ) {
 				update_option( 'comment_tinymce_heading_three', sanitize_text_field($_POST['comment_tinymce_heading_three']) );
 			} else {
 				add_option( 'comment_tinymce_heading_three', sanitize_text_field($_POST['comment_tinymce_heading_three']), null, 'no' );
 			}
 
-			if (  $comment_tinymce_options['comment_tinymce_heading_four'] !== false ) {
+			if ( $comment_tinymce_options['comment_tinymce_heading_four'] !== false ) {
 				update_option( 'comment_tinymce_heading_four', sanitize_text_field($_POST['comment_tinymce_heading_four']) );
 			} else {
 				add_option( 'comment_tinymce_heading_four', sanitize_text_field($_POST['comment_tinymce_heading_four']), null, 'no' );
 			}
 
-			if (  $comment_tinymce_options['comment_tinymce_heading_five'] !== false ) {
+			if ( $comment_tinymce_options['comment_tinymce_heading_five'] !== false ) {
 				update_option( 'comment_tinymce_heading_five', sanitize_text_field($_POST['comment_tinymce_heading_five']) );
 			} else {
 				add_option( 'comment_tinymce_heading_five', sanitize_text_field($_POST['comment_tinymce_heading_five']), null, 'no' );
 			}
 
-			if (  $comment_tinymce_options['comment_tinymce_heading_six'] !== false ) {
+			if ( $comment_tinymce_options['comment_tinymce_heading_six'] !== false ) {
 				update_option( 'comment_tinymce_heading_six', sanitize_text_field($_POST['comment_tinymce_heading_six']) );
 			} else {
 				add_option( 'comment_tinymce_heading_six', sanitize_text_field($_POST['comment_tinymce_heading_six']), null, 'no' );
 			}
+
+			if ( $comment_tinymce_options['comment_tinymce_media_btn'] !== false ) {
+				update_option( 'comment_tinymce_media_btn', sanitize_text_field($_POST['comment_tinymce_media_btn']) );
+			} else {
+				add_option( 'comment_tinymce_media_btn', sanitize_text_field($_POST['comment_tinymce_media_btn']), null, 'no' );
+			}
+
+			if ( $comment_tinymce_options['comment_tinymce_pre_tag'] !== false ) {
+				update_option( 'comment_tinymce_pre_tag', sanitize_text_field($_POST['comment_tinymce_pre_tag']) );
+			} else {
+				add_option( 'comment_tinymce_pre_tag', sanitize_text_field($_POST['comment_tinymce_pre_tag']), null, 'no' );
+			}
+
 			wp_redirect( admin_url( 'admin.php?page=comment-tinymce&update-status=true' ) );
+
 		}
-
-
 	}
-
 }
