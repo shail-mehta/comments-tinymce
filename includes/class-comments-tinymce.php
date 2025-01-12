@@ -80,7 +80,19 @@ class Comments_Tinymce {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
+		// Add Yoast SEO filter on the plugins_loaded hook
+        add_action( 'plugins_loaded', array( $this, 'add_yoast_seo_filter' ) );
 	}
+
+	/**
+     * Add Yoast SEO filter after all plugins are loaded
+     */
+    public function add_yoast_seo_filter() {
+        if ( defined( 'WPSEO_VERSION' ) ) {
+            // Yoast SEO is active, so add the filter
+            add_filter( 'wpseo_remove_reply_to_com', '__return_false' );
+        }
+    }
 
 	/**
 	 * Load the required dependencies for this plugin.
