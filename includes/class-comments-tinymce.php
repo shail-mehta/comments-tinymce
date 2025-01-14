@@ -82,6 +82,9 @@ class Comments_Tinymce {
 
 		// Add Yoast SEO filter on the plugins_loaded hook
         add_action( 'plugins_loaded', array( $this, 'add_yoast_seo_filter' ) );
+
+        // Add Rank Math SEO filter on the plugins_loaded hook
+        add_action( 'plugins_loaded', array( $this, 'add_rank_math_filter' ) );
 	}
 
 	/**
@@ -93,6 +96,16 @@ class Comments_Tinymce {
             add_filter( 'wpseo_remove_reply_to_com', '__return_false' );
         }
     }
+
+    /**
+	 * Add Rank Math filter after all plugins are loaded.
+	 */
+	public function add_rank_math_filter() {
+	    if ( defined( 'RANK_MATH_VERSION' ) ) {
+	        // Rank Math is active, so add the filter.
+	        add_filter( 'rank_math/frontend/remove_reply_to_com', '__return_false');
+	    }
+	}
 
 	/**
 	 * Load the required dependencies for this plugin.
