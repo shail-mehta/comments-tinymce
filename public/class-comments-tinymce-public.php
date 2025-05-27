@@ -168,7 +168,6 @@ class Comments_Tinymce_Public {
 	        $heading_formats[] = 'Heading 6=h6';
 	    }
 
-
 	    // Add all heading formats to the block formats array
 	    $block_formats = array_merge($block_formats, $heading_formats);
 
@@ -179,7 +178,6 @@ class Comments_Tinymce_Public {
 	    
 	    // Set the block formats in the TinyMCE initialization settings
 	    $init['block_formats'] = implode(';', $block_formats);
-
 
 	    if (isset($init['toolbar'])) {
 	        $init['toolbar'] .= ',formatselect';
