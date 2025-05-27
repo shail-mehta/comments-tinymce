@@ -192,6 +192,19 @@ class Comments_Tinymce_Admin {
 				add_option( 'comment_tinymce_pre_tag', sanitize_text_field($_POST['comment_tinymce_pre_tag']), null, 'no' );
 			}
 
+			if ( $comment_tinymce_options['comment_tinymce_blockquote'] !== false ) {
+				update_option( 'comment_tinymce_blockquote', sanitize_text_field($_POST['comment_tinymce_blockquote']) );
+			} else {
+				add_option( 'comment_tinymce_blockquote', sanitize_text_field($_POST['comment_tinymce_blockquote']), null, 'no' );
+			}
+
+			if ( $comment_tinymce_options['comment_tinymce_code_text_tab'] !== false ) {
+				update_option( 'comment_tinymce_code_text_tab', sanitize_text_field($_POST['comment_tinymce_code_text_tab']) );
+			} else {
+				add_option( 'comment_tinymce_code_text_tab', sanitize_text_field($_POST['comment_tinymce_code_text_tab']), null, 'no' );
+			}
+
+			
 			wp_redirect( admin_url( 'admin.php?page=comment-tinymce&update-status=true' ) );
 
 		}

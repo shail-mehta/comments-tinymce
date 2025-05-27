@@ -204,6 +204,10 @@ class Comments_Tinymce {
 		$this->loader->add_action( 'init', $plugin_public, 'comment_tinymce_form_allowed_tags', 20 );
 		$load_comment_tinymce = $this->comment_tinymce_get_options();
 		$this->loader->add_filter('tiny_mce_before_init', $plugin_public, 'comment_tinymce_customize', 20, 2); 
+		$this->loader->add_filter( 'mce_buttons', $this, 'remove_blockquote_button' );
+		$this->loader->add_filter( 'quicktags_settings', $this, 'remove_quicktags_buttons');
+		$this->loader->add_filter( 'wp_editor_settings', $this, 'disable_quicktags_globally', 10, 2 );
+
 	}
 
 	/**
@@ -246,6 +250,38 @@ class Comments_Tinymce {
 		return $this->version;
 	}
 
+	public function remove_blockquote_button( $buttons ) {
+
+		$options = self::comment_tinymce_get_options();
+
+		if ( ! empty( $options['comment_tinymce_blockquote'] ) ) {
+			$buttons = array_diff( $buttons, array( 'blockquote' ) );
+		}
+
+		return $buttons;
+	}
+
+	public function remove_quicktags_buttons( $qtInit ) {
+		
+    	$options = self::comment_tinymce_get_options();
+
+		if ( ! empty( $options['comment_tinymce_blockquote'] ) ) {
+			$qtInit['buttons'] = 'strong,em,link,del,ins,img,ul,ol,li,code,more,close';
+		}
+		return $qtInit;
+	
+	}
+
+	public function disable_quicktags_globally( $settings, $editor_id ) {
+
+		$options = self::comment_tinymce_get_options();
+
+		if ( ! empty( $options['comment_tinymce_code_text_tab'] ) ) {
+    		$settings['quicktags'] = false;
+		}
+    	return $settings;
+	}
+
 	public static function comment_tinymce_get_options() {
 
 		$options['comment_tinymce_heading_one'] = get_option( 'comment_tinymce_heading_one' );
@@ -256,6 +292,9 @@ class Comments_Tinymce {
 		$options['comment_tinymce_heading_six'] = get_option( 'comment_tinymce_heading_six' );
 		$options['comment_tinymce_media_btn'] = get_option( 'comment_tinymce_media_btn' );
 		$options['comment_tinymce_pre_tag'] = get_option( 'comment_tinymce_pre_tag' );
+	 	$options['comment_tinymce_blockquote'] = get_option( 'comment_tinymce_blockquote' );
+		$options['comment_tinymce_code_text_tab'] = get_option( 'comment_tinymce_code_text_tab' );
+		
 		return $options;
 
 	}

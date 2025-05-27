@@ -84,6 +84,20 @@ $comment_tinymce_options = Comments_Tinymce::comment_tinymce_get_options();
                         <?php if(isset($comment_tinymce_options['comment_tinymce_pre_tag']) && $comment_tinymce_options['comment_tinymce_pre_tag'])  echo 'checked="checked"'; else ''; ?>/>
                     </td>
                 </tr>
+                 <tr>
+                    <th scope="row"><?php echo esc_html( 'Disable Blockquote', 'comment-tinymce' ); ?></th>
+                    <td>
+                        <input type="checkbox" name="comment_tinymce_blockquote" id="comment_tinymce_blockquote" value="1"
+                        <?php if(isset($comment_tinymce_options['comment_tinymce_blockquote']) && $comment_tinymce_options['comment_tinymce_blockquote'])  echo 'checked="checked"'; else ''; ?>/>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php echo esc_html( 'Disable Code/Text Tab', 'comment-tinymce' ); ?></th>
+                    <td>
+                        <input type="checkbox" name="comment_tinymce_code_text_tab" id="comment_tinymce_code_text_tab" value="1"
+                        <?php if(isset($comment_tinymce_options['comment_tinymce_code_text_tab']) && $comment_tinymce_options['comment_tinymce_code_text_tab'])  echo 'checked="checked"'; else ''; ?>/>
+                    </td>
+                </tr>
             </table>
             <p class="submit">
                 <input type="submit" name="Submit" class="button-primary"
