@@ -2,9 +2,9 @@
 Contributors: shailu25
 Tags: comments, comment-form, tinymce, comment-form-tinymce, tinymce-editor
 Requires at least: 5.0 or higher
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ User can also disable heading tags,Media Button & Pre Tags in tinymce editor. (V
 - Backend Side Settings
 
 == Changelog ==
+
+= 1.1.1 =
+- Enhancement: Compatibility With Latest WordPress 6.8
 
 = 1.1.0 =
 - Fixed Reply Button Issue in Comment Form with Rank Math SEO Plugin.
