@@ -185,8 +185,14 @@ class Comments_Tinymce {
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'comment_tinymce_admin_menu' );
 		$this->loader->add_action( 'admin_post_save_comment_tinymce_update_settings',$plugin_admin,'comment_tinymce_update_settings');
 		$this->loader->add_filter( 'plugin_action_links_comment-tinymce/'.$this->plugin_name.'.php',$plugin_admin,'comment_tinymce_settings_link',10,1 );
-	}
+		$load_comment_tinymce = $this->comment_tinymce_get_options();
+		if ( ! empty( $load_comment_tinymce['comment_tinymce_in_edit_comment'] ) ) {
+			$this->loader->add_filter( 'wp_editor_settings', $this, 'enable_comment_editor_tinymce', 10, 2 );
+			$this->loader->add_action( 'comment_edit_pre', $this, 'load_comment_editor_tinymce' );
+		}
 
+	}
+	
 	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
@@ -282,6 +288,25 @@ class Comments_Tinymce {
     	return $settings;
 	}
 
+	public function enable_comment_editor_tinymce( $settings, $editor_id ) {
+
+		global $pagenow;
+
+		if ( $editor_id === 'content' && $pagenow === 'comment.php' ) {
+			$settings['quicktags'] = true;
+			$settings['tinymce'] = true;
+		}
+
+		return $settings;
+
+	}
+
+	public function load_comment_editor_tinymce($content) {
+
+		return html_entity_decode( $content );
+
+	}
+
 	public static function comment_tinymce_get_options() {
 
 		$options['comment_tinymce_heading_one'] = get_option( 'comment_tinymce_heading_one' );
@@ -294,6 +319,7 @@ class Comments_Tinymce {
 		$options['comment_tinymce_pre_tag'] = get_option( 'comment_tinymce_pre_tag' );
 	 	$options['comment_tinymce_blockquote'] = get_option( 'comment_tinymce_blockquote' );
 		$options['comment_tinymce_code_text_tab'] = get_option( 'comment_tinymce_code_text_tab' );
+		$options['comment_tinymce_in_edit_comment'] = get_option( 'comment_tinymce_in_edit_comment' );
 		
 		return $options;
 

@@ -204,6 +204,11 @@ class Comments_Tinymce_Admin {
 				add_option( 'comment_tinymce_code_text_tab', sanitize_text_field($_POST['comment_tinymce_code_text_tab']), null, 'no' );
 			}
 
+			if ( $comment_tinymce_options['comment_tinymce_in_edit_comment'] !== false ) {
+				update_option( 'comment_tinymce_in_edit_comment', sanitize_text_field($_POST['comment_tinymce_in_edit_comment']) );
+			} else {
+				add_option( 'comment_tinymce_in_edit_comment', sanitize_text_field($_POST['comment_tinymce_in_edit_comment']), null, 'no' );
+			}
 			
 			wp_redirect( admin_url( 'admin.php?page=comment-tinymce&update-status=true' ) );
 
