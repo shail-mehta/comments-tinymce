@@ -98,6 +98,13 @@ $comment_tinymce_options = Comments_Tinymce::comment_tinymce_get_options();
                         <?php if(isset($comment_tinymce_options['comment_tinymce_code_text_tab']) && $comment_tinymce_options['comment_tinymce_code_text_tab'])  echo 'checked="checked"'; else ''; ?>/>
                     </td>
                 </tr>
+                <tr>
+                    <th scope="row"><?php echo esc_html( 'Enable TinyMce in Edit Comment (In Admin Side)', 'comment-tinymce' ); ?></th>
+                    <td>
+                        <input type="checkbox" name="comment_tinymce_in_edit_comment" id="comment_tinymce_in_edit_comment" value="1"
+                        <?php if(isset($comment_tinymce_options['comment_tinymce_in_edit_comment']) && $comment_tinymce_options['comment_tinymce_in_edit_comment'])  echo 'checked="checked"'; else ''; ?>/>
+                    </td>
+                </tr>
             </table>
             <p class="submit">
                 <input type="submit" name="Submit" class="button-primary"
